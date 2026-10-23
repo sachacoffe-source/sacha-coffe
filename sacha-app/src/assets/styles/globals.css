@@ -1,0 +1,49 @@
+/* 1. Importación unificada de Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* 2. Definición de variables de marca y temas */
+@theme {
+  --color-verde-montana: #0c3321;
+  --color-marfil: #f9f0ea;
+  --color-musgo: #a1a794;
+  --color-blanco: #ffffff;
+
+  --font-serif: "Harmond Condensed", Georgia, serif;
+  --font-sans: "Neue Haas Grotesk", system-ui, -apple-system, sans-serif;
+  --font-jp: "Yu Gothic UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+}
+
+/* 3. Estilos globales base opcionales */
+body {
+  background-color: var(--color-marfil);
+  color: var(--color-verde-montana);
+  font-family: var(--font-sans);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Animaciones de scroll y revelado nativas sin dependencias pesadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Efecto Hover Premium */
+.card-hover-effect {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(12, 51, 33, 0.08);
+}
