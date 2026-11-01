@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import DripBoxCanvas from '../components/ui/DripBoxCanvas';
 
 function useOnScreen(ref, rootMargin = "-80px") {
@@ -15,6 +16,7 @@ function useOnScreen(ref, rootMargin = "-80px") {
 }
 
 export default function HomePage({ onOpenContact }) {
+  const { t } = useTranslation();
   const [selectedLot, setSelectedLot] = useState(null);
 
   const philosophyRef = useRef(null);
@@ -38,19 +40,9 @@ export default function HomePage({ onOpenContact }) {
     return () => clearInterval(interval);
   }, [timerRunning]);
 
-  const activeLots = [
-    {
-      id: "LOTE SL-28",
-      farm: "Finca Villa Sol",
-      producer: "Juan Serna",
-      region: "Tapartó, Antioquia, Colombia",
-      process: "Natural",
-      variety: "SL-28",
-      format: "Box of 7 Drip Coffee Bags",
-      score: "Especialidad Tapartó",
-      notes: ["Sweet Chocolate", "Tropical Fruits", "Red Fruits", "Yellow Fruits"],
-    }
-  ];
+  // Lectura del arreglo de notas de cata con returnObjects para i18n
+  const tastingNotes = t('lot.notes', { returnObjects: true });
+  const safeNotes = Array.isArray(tastingNotes) ? tastingNotes : [];
 
   return (
     <div className="w-full font-sans">
@@ -71,16 +63,16 @@ export default function HomePage({ onOpenContact }) {
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#a1a794]/40 bg-[#a1a794]/10 text-xs text-[#a1a794] uppercase tracking-widest font-mono">
             <span>改善</span>
             <span>•</span>
-            <span>De las montañas colombianas a tu taza en Tokio</span>
+            <span>{t('hero.tagline')}</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-[#f9f0ea] leading-tight">
-            Café de Especialidad <br/>
-            <span className="italic font-normal text-[#a1a794]">El Primer Acto de Maestría del Día</span>
+            {t('hero.title')} <br/>
+            <span className="italic font-normal text-[#a1a794]">{t('hero.subtitle')}</span>
           </h1>
 
           <p className="max-w-2xl mx-auto text-base sm:text-lg text-[#f9f0ea]/85 leading-relaxed font-light">
-            Sach'a es el vínculo honesto entre quien cultiva con rigor en las montañas de Colombia y quien prepara con presencia e intención en Tokio. Una cadena justa, transparente y sin atajos.
+            {t('hero.description')}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -88,13 +80,13 @@ export default function HomePage({ onOpenContact }) {
               onClick={onOpenContact}
               className="w-full sm:w-auto px-8 py-3.5 rounded-lg bg-[#f9f0ea] text-[#0c3321] font-bold text-sm tracking-wide hover:bg-white transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>Acceso Directo QR (LINE Official)</span>
+              <span>{t('hero.cta_line')}</span>
             </button>
             <a 
               href="#lotes"
               className="w-full sm:w-auto px-8 py-3.5 rounded-lg border border-[#f9f0ea]/30 text-[#f9f0ea] hover:bg-white/10 text-sm font-medium text-center transition-all"
             >
-              Explorar Lotes Activos
+              {t('hero.cta_lots')}
             </a>
           </div>
         </div>
@@ -108,25 +100,25 @@ export default function HomePage({ onOpenContact }) {
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-6 rounded-xl bg-white border border-[#0c3321]/10 space-y-3 shadow-sm hover:border-[#0c3321]/30 transition-all">
             <div className="w-10 h-10 rounded-lg bg-[#0c3321]/5 flex items-center justify-center text-[#0c3321] font-mono font-bold">01</div>
-            <h3 className="text-xl font-bold font-serif text-[#0c3321]">Kaizen en Taza (改善)</h3>
+            <h3 className="text-xl font-bold font-serif text-[#0c3321]">{t('philosophy.card1_title')}</h3>
             <p className="text-sm text-[#0c3321]/70 leading-relaxed">
-              La maestría personal se construye con pequeñas decisiones conscientes repetidas cada mañana con disciplina y paciencia.
+              {t('philosophy.card1_desc')}
             </p>
           </div>
 
           <div className="p-6 rounded-xl bg-white border border-[#0c3321]/10 space-y-3 shadow-sm hover:border-[#0c3321]/30 transition-all">
             <div className="w-10 h-10 rounded-lg bg-[#0c3321]/5 flex items-center justify-center text-[#0c3321] font-mono font-bold">02</div>
-            <h3 className="text-xl font-bold font-serif text-[#0c3321]">Cadena Honesta & Trazable</h3>
+            <h3 className="text-xl font-bold font-serif text-[#0c3321]">{t('philosophy.card2_title')}</h3>
             <p className="text-sm text-[#0c3321]/70 leading-relaxed">
-              Transparencia técnica total. Cada empaque identifica la finca, la variedad, el método de beneficio y el nombre del caficultor.
+              {t('philosophy.card2_desc')}
             </p>
           </div>
 
           <div className="p-6 rounded-xl bg-white border border-[#0c3321]/10 space-y-3 shadow-sm hover:border-[#0c3321]/30 transition-all">
             <div className="w-10 h-10 rounded-lg bg-[#0c3321]/5 flex items-center justify-center text-[#0c3321] font-mono font-bold">03</div>
-            <h3 className="text-xl font-bold font-serif text-[#0c3321]">Comunidad de Co-creación</h3>
+            <h3 className="text-xl font-bold font-serif text-[#0c3321]">{t('philosophy.card3_title')}</h3>
             <p className="text-sm text-[#0c3321]/70 leading-relaxed">
-              Nuestra comunidad en Japón participa activamente opinando y eligiendo los próximos micro-lotes a importar.
+              {t('philosophy.card3_desc')}
             </p>
           </div>
         </div>
@@ -141,49 +133,49 @@ export default function HomePage({ onOpenContact }) {
         <div className="max-w-5xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-mono text-[#a1a794] uppercase tracking-widest">Microlotes en Circulación</span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0c3321] mt-1">Lotes de Origen Verificables</h2>
+              <span className="text-xs font-mono text-[#a1a794] uppercase tracking-widest">{t('lotsSection.badge')}</span>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0c3321] mt-1">{t('lotsSection.title')}</h2>
             </div>
             <button 
               onClick={onOpenContact}
               className="text-sm font-bold text-[#0c3321] underline underline-offset-4 hover:text-[#164830] cursor-pointer"
             >
-              Consultar disponibilidad vía LINE &rarr;
+              {t('lotsSection.ctaLine')} &rarr;
             </button>
           </div>
 
           <div className="rounded-xl border border-[#0c3321]/15 p-6 bg-[#f9f0ea]/50 hover:bg-[#f9f0ea] transition-all shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
               
-              {/* COLUMNA IZQUIERDA: INFORMACIÓN DE LOTE */}
+              {/* COLUMNA IZQUIERDA: INFORMACIÓN Y DATOS TÉCNICOS */}
               <div className="md:col-span-7 space-y-4 order-2 md:order-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono px-2.5 py-1 rounded bg-[#0c3321] text-[#f9f0ea] font-medium">{activeLots[0].id}</span>
-                  <span className="text-xs font-bold text-[#0c3321] bg-[#a1a794]/20 px-2.5 py-1 rounded-full">{activeLots[0].format}</span>
+                  <span className="text-xs font-mono px-2.5 py-1 rounded bg-[#0c3321] text-[#f9f0ea] font-medium">{t('lot.code')}</span>
+                  <span className="text-xs font-bold text-[#0c3321] bg-[#a1a794]/20 px-2.5 py-1 rounded-full">{t('lot.format')}</span>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-[#0c3321]">{activeLots[0].farm}</h3>
+                  <h3 className="text-2xl font-serif font-bold text-[#0c3321]">{t('lot.farm')}</h3>
                   <p className="text-xs text-[#0c3321]/70 mt-0.5">
-                    Productor: <strong>{activeLots[0].producer}</strong> • {activeLots[0].region}
+                    {t('lot.modalProducer')}: <strong>{t('lot.producer')}</strong> • {t('lot.region')}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-xs pt-1">
                   <div className="p-2.5 rounded bg-white border border-[#0c3321]/10">
-                    <span className="block text-[#0c3321]/50 text-[10px] font-mono uppercase">Proceso</span>
-                    <span className="font-semibold text-[#0c3321]">{activeLots[0].process}</span>
+                    <span className="block text-[#0c3321]/50 text-[10px] font-mono uppercase">{t('lot.modalProcess')}</span>
+                    <span className="font-semibold text-[#0c3321]">{t('lot.process')}</span>
                   </div>
                   <div className="p-2.5 rounded bg-white border border-[#0c3321]/10">
-                    <span className="block text-[#0c3321]/50 text-[10px] font-mono uppercase">Variedad</span>
-                    <span className="font-semibold text-[#0c3321]">{activeLots[0].variety}</span>
+                    <span className="block text-[#0c3321]/50 text-[10px] font-mono uppercase">{t('lot.modalVariety')}</span>
+                    <span className="font-semibold text-[#0c3321]">{t('lot.variety')}</span>
                   </div>
                 </div>
 
                 <div>
-                  <span className="block text-[10px] text-[#0c3321]/50 mb-1.5 uppercase tracking-wider font-mono">Notas de Cata</span>
+                  <span className="block text-[10px] text-[#0c3321]/50 mb-1.5 uppercase tracking-wider font-mono">{t('lot.notesTitle')}</span>
                   <div className="flex flex-wrap gap-1.5">
-                    {activeLots[0].notes.map((note, idx) => (
+                    {safeNotes.map((note, idx) => (
                       <span key={idx} className="text-xs px-2.5 py-1 rounded-full bg-white text-[#0c3321] border border-[#0c3321]/10 font-medium">
                         {note}
                       </span>
@@ -192,14 +184,14 @@ export default function HomePage({ onOpenContact }) {
                 </div>
 
                 <button 
-                  onClick={() => setSelectedLot(activeLots[0])}
+                  onClick={() => setSelectedLot(true)}
                   className="w-full py-2.5 rounded bg-[#0c3321] text-[#f9f0ea] text-xs font-bold hover:bg-[#164830] transition-colors cursor-pointer"
                 >
-                  Ver Ficha de Trazabilidad
+                  {t('lot.btnTraceability')}
                 </button>
               </div>
 
-              {/* COLUMNA DERECHA: VISOR 3D */}
+              {/* COLUMNA DERECHA: MODELO 3D */}
               <div className="md:col-span-5 order-1 md:order-2">
                 <DripBoxCanvas />
               </div>
@@ -216,10 +208,10 @@ export default function HomePage({ onOpenContact }) {
       >
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <span className="text-xs font-mono text-[#a1a794] uppercase tracking-widest">Ritual Consciente</span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#f9f0ea]">Guía & Temporizador V60</h2>
+            <span className="text-xs font-mono text-[#a1a794] uppercase tracking-widest">{t('ritual.badge')}</span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#f9f0ea]">{t('ritual.title')}</h2>
             <p className="text-sm text-[#f9f0ea]/80 leading-relaxed font-light">
-              La preparación precisa del Lote SL-28 resalta sus notas de chocolate dulce, frutos rojos y frutas amarillas. Acompaña tu vertido a 93°C con este temporizador.
+              {t('ritual.description')}
             </p>
 
             <div className="p-6 rounded-xl bg-white/5 border border-white/10 space-y-4">
@@ -228,7 +220,7 @@ export default function HomePage({ onOpenContact }) {
                   {Math.floor(seconds / 60).toString().padStart(2, '0')}:{(seconds % 60).toString().padStart(2, '0')}
                 </span>
                 <span className="block text-xs font-mono text-[#a1a794] uppercase tracking-widest mt-2">
-                  {seconds < 30 ? '01. Blooming / Pre-infusión (40g agua)' : seconds < 90 ? '02. Primer Vertido Circular (120g agua)' : '03. Extracción Final (250g agua)'}
+                  {seconds < 30 ? t('ritual.step1') : seconds < 90 ? t('ritual.step2') : t('ritual.step3')}
                 </span>
               </div>
 
@@ -237,13 +229,13 @@ export default function HomePage({ onOpenContact }) {
                   onClick={() => setTimerRunning(!timerRunning)}
                   className="flex-1 py-3 rounded bg-[#f9f0ea] text-[#0c3321] font-bold text-xs hover:bg-white transition-colors cursor-pointer"
                 >
-                  {timerRunning ? 'Pausar' : 'Iniciar Ritual'}
+                  {timerRunning ? t('ritual.btnPause') : t('ritual.btnStart')}
                 </button>
                 <button 
                   onClick={() => { setTimerRunning(false); setSeconds(0); }}
                   className="px-4 py-3 rounded border border-[#f9f0ea]/30 text-[#f9f0ea] font-bold text-xs hover:bg-white/10 transition-colors cursor-pointer"
                 >
-                  Reiniciar
+                  {t('ritual.btnReset')}
                 </button>
               </div>
             </div>
@@ -260,29 +252,29 @@ export default function HomePage({ onOpenContact }) {
         </div>
       </section>
 
-      {/* MODAL TRAZABILIDAD */}
+      {/* MODAL FICHA DE TRAZABILIDAD */}
       {selectedLot && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-[#f9f0ea] max-w-lg w-full rounded-xl p-6 border border-[#0c3321]/20 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-[#0c3321]/10 pb-3">
-              <h3 className="font-serif font-bold text-xl text-[#0c3321]">{selectedLot.farm}</h3>
+              <h3 className="font-serif font-bold text-xl text-[#0c3321]">{t('lot.farm')} ({t('lot.code')})</h3>
               <button onClick={() => setSelectedLot(null)} className="text-sm font-bold text-[#0c3321] p-1 cursor-pointer">✕</button>
             </div>
             <p className="text-xs text-[#0c3321]/80 leading-relaxed">
-              Ficha técnica unificada de origen. Cultivado por <strong>{selectedLot.producer}</strong> en {selectedLot.region} y procesado bajo el método {selectedLot.process}.
+              {t('lot.modalDesc')}
             </p>
             <div className="p-4 bg-white rounded-lg border border-[#0c3321]/10 text-xs space-y-2">
-              <div className="flex justify-between"><span>Productor:</span><span className="font-bold">{selectedLot.producer}</span></div>
-              <div className="flex justify-between"><span>Origen:</span><span className="font-bold">{selectedLot.region}</span></div>
-              <div className="flex justify-between"><span>Variedad:</span><span className="font-bold">{selectedLot.variety}</span></div>
-              <div className="flex justify-between"><span>Proceso:</span><span className="font-bold">{selectedLot.process}</span></div>
-              <div className="flex justify-between"><span>Presentación:</span><span className="font-bold">{selectedLot.format}</span></div>
+              <div className="flex justify-between"><span>{t('lot.modalId')}:</span><span className="font-bold">{t('lot.code')}</span></div>
+              <div className="flex justify-between"><span>{t('lot.modalProducer')}:</span><span className="font-bold">{t('lot.producer')}</span></div>
+              <div className="flex justify-between"><span>{t('lot.modalOrigin')}:</span><span className="font-bold">{t('lot.region')}</span></div>
+              <div className="flex justify-between"><span>{t('lot.modalVariety')}:</span><span className="font-bold">{t('lot.variety')}</span></div>
+              <div className="flex justify-between"><span>{t('lot.modalProcess')}:</span><span className="font-bold">{t('lot.process')}</span></div>
             </div>
             <button 
               onClick={() => { setSelectedLot(null); onOpenContact(); }}
               className="w-full py-2.5 bg-[#00B900] text-white rounded font-bold text-xs cursor-pointer hover:bg-[#009900] transition-colors flex items-center justify-center gap-2"
             >
-              <span>Consultar este Lote por LINE Official</span>
+              <span>{t('hero.cta_line')}</span>
             </button>
           </div>
         </div>
