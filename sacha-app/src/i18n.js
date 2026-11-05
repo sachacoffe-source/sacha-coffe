@@ -9,14 +9,14 @@ const resources = {
         home: "Inicio",
         lots: "Lotes Activos",
         legal: "Legal Japón (特定商取引法)",
-        contact: "¿Hablamos por LINE?"
+        contact: "Habla con nosotros"
       },
       hero: {
         tagline: "De las montañas colombianas a tu taza en Tokio",
         title: "Café de Especialidad",
         subtitle: "El Primer Acto de Maestría del Día",
         description: "Sach'a es el vínculo honesto entre quien cultiva con rigor en las montañas de Colombia y quien prepara con presencia e intención en Tokio. Una cadena justa, transparente y sin atajos.",
-        cta_line: "Habla con nosotros por LINE",
+        cta_line: "Contáctanos",
         cta_lots: "Explorar Lotes Activos"
       },
       philosophy: {
@@ -30,7 +30,7 @@ const resources = {
       lotsSection: {
         badge: "Microlotes en Circulación",
         title: "Lotes de Origen Verificables",
-        ctaLine: "Consultar disponibilidad vía LINE"
+        ctaLine: "Consultar disponibilidad vía chat"
       },
       lot: {
         code: "LOTE COL-01",
@@ -66,7 +66,7 @@ const resources = {
         nav_title: "Navegación",
         contact_title: "Contacto Rápido",
         social_title: "Redes Sociales",
-        scan_qr: "Escríbenos a LINE",
+        scan_qr: "Habla con nosotros",
         rights: "Todos los derechos reservados."
       }
     }
@@ -77,14 +77,14 @@ const resources = {
         home: "Home",
         lots: "Active Lots",
         legal: "Japan Legal (Tokushoho)",
-        contact: "Chat on LINE"
+        contact: "Contact us"
       },
       hero: {
         tagline: "From Colombian mountains to your cup in Tokyo",
         title: "Specialty Coffee",
         subtitle: "The First Act of Mastery of the Day",
         description: "Sach'a is the honest bond between those who cultivate with rigor in Colombia and those who brew with intention in Tokyo. A fair, transparent chain without shortcuts.",
-        cta_line: "Chat directly with us on LINE",
+        cta_line: "Get in touch",
         cta_lots: "Explore Active Lots"
       },
       philosophy: {
@@ -98,7 +98,7 @@ const resources = {
       lotsSection: {
         badge: "Micro-lots in Circulation",
         title: "Verifiable Origin Lots",
-        ctaLine: "Check availability via LINE"
+        ctaLine: "Check availability via chat"
       },
       lot: {
         code: "LOT COL-01",
@@ -134,7 +134,7 @@ const resources = {
         nav_title: "Navigation",
         contact_title: "Quick Contact",
         social_title: "Social Media",
-        scan_qr: "Message Us on LINE",
+        scan_qr: "Contact us",
         rights: "All rights reserved."
       }
     }
@@ -145,14 +145,14 @@ const resources = {
         home: "ホーム",
         lots: "取扱ロット",
         legal: "特定商取引法に基づく表記",
-        contact: "LINEでお問合せ"
+        contact: "お問い合わせ"
       },
       hero: {
         tagline: "コロンビアの山々から東京の1杯へ",
         title: "スペシャルティコーヒー",
         subtitle: "1日を極める最初の儀式",
         description: "Sach'aは、コロンビアの厳格な生産者と東京で誠実にコーヒーを淹れる人々を繋ぐ純粋な架け橋です。近道のない公正で透明なチェーン。",
-        cta_line: "LINEで気軽に話す",
+        cta_line: "お問い合わせ",
         cta_lots: "ロットを見る"
       },
       philosophy: {
@@ -166,7 +166,7 @@ const resources = {
       lotsSection: {
         badge: "現在取扱中のマイクロロット",
         title: "原産地検証済みロット",
-        ctaLine: "LINEで在庫を確認"
+        ctaLine: "チャットで在庫を確認"
       },
       lot: {
         code: "ロット COL-01",
@@ -202,7 +202,7 @@ const resources = {
         nav_title: "ナビゲーション",
         contact_title: "クイックコンタクト",
         social_title: "ソーシャルメディア",
-        scan_qr: "LINEで相談する",
+        scan_qr: "お問い合わせ",
         rights: "無断転載を禁じます。"
       }
     }
